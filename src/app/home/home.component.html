@@ -1,0 +1,71 @@
+<section class="content">
+  <div class="actionBar">
+    <div class="sort">
+      <p>Sort by</p>
+      <select
+        class="selectBox"
+        name="sort"
+        id="sortBy"
+        (change)="sortBy($event)"
+      >
+        <option value="created_at">Create at</option>
+        <option value="title">Title</option>
+        <option value="content">Content</option>
+        <option value="updated_at">Update at</option>
+      </select>
+    </div>
+    <div class="search">
+      <input
+        class="inputSearch"
+        type="text"
+        name="search"
+        id="searchInput"
+        [(ngModel)]="params.search"
+        (keyup.enter)="handleSearch()"
+        placeholder="Search anything you interesting"
+      />
+      <button class="btnSearch" (click)="handleSearch()">
+        <i class="material-icons">search</i>
+      </button>
+    </div>
+  </div>
+  <div [class.loading]="loading"></div>
+  <div class="blogList">
+    <div class="blog" *ngFor="let item of data">
+      <div class="avatarImg">
+        <img class="avatar" [src]="item.image.url" alt="avatar" />
+      </div>
+      <div class="blogContent">
+        <p class="titleBlog">{{ item.title }}</p>
+        <p class="contentBlog">{{ item.content }}</p>
+      </div>
+      <button class="btnEdit" (click)="editBlog(item.id)"><i class="material-icons">edit</i></button>
+    </div>
+  </div>
+  <div class="pagination" [class.hide]="!data">
+    <button
+      class="button btnArrow"
+      (click)="changePage(0)"
+      [class.inActive]="currentPage === 1"
+    >
+      <i class="material-icons">keyboard_arrow_left</i>
+    </button>
+
+    <button
+      class="button"
+      *ngFor="let item of pagination"
+      (click)="changePage(item)"
+      [class.active]="item === currentPage"
+    >
+      {{ item }}
+    </button>
+
+    <button
+      class="button btnArrow"
+      (click)="changePage(totalPage + 1)"
+      [class.inActive]="currentPage === totalPage"
+    >
+      <i class="material-icons">keyboard_arrow_right</i>
+    </button>
+  </div>
+</section>

@@ -1,0 +1,149 @@
+.content {
+  padding: 20px 15%;
+  .actionBar {
+    display: flex;
+    align-items: center;
+    .sort {
+      width: 35%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 20px;
+      .selectBox {
+        margin-left: 15px;
+        padding: 0 10px;
+        font-size: 16px;
+        font-family: "Nunito Sans", sans-serif;
+        width: 70%;
+        height: 37px;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+    }
+    .search {
+      width: 65%;
+      display: flex;
+      align-items: center;
+      .inputSearch {
+        font-size: 16px;
+        font-family: "Nunito Sans", sans-serif;
+        height: 35px;
+        width: 85%;
+        padding: 0 10px;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+      .btnSearch {
+        margin-left: -40px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        width: 40px;
+        height: 37px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+  .loading {
+    border: 5px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
+    border-left: 5px solid #3498db;
+    border-right: 5px solid #3498db;
+    width: 30px;
+    height: 30px;
+    animation: spin 0.7s linear infinite;
+    position: absolute;
+    top: 200px;
+    left: 48%;
+  }
+  .blogList {
+    margin-top:  40px;
+    .blog {
+      margin: 10px 0;
+      padding: 15px 20px;
+      border: 1px dashed dodgerblue;
+      border-radius: 10px;
+      display: flex;
+      position: relative;
+      .avatarImg {
+        height: 100px;
+        width: 100px;
+        .avatar {
+          border-radius: 50%;
+          height: 100px;
+          width: 100px;
+        }
+      }
+      .blogContent {
+        margin-left: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-clamp: 3;
+        .titleBlog {
+          margin: 0;
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .contentBlog {
+          margin: 10px 0;
+        }
+      }
+      .btnEdit {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+    }
+  }
+  .pagination {
+    margin-top: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    .button {
+      width: 40px;
+      margin: 2px;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background: none;
+      color: black;
+      font-family: "Nunito Sans", sans-serif;
+      cursor: pointer;
+      &:hover {
+        background-color: dodgerblue;
+      }
+    }
+    .btnArrow {
+      height: 40px;
+    }
+    .active {
+      background-color: dodgerblue;
+      font-weight: bold;
+    }
+    .inActive {
+      cursor: default;
+      opacity: 0.5;
+      &:hover {
+        background: none;
+      }
+    }
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

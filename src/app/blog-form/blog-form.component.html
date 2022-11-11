@@ -1,0 +1,46 @@
+<section class="createForm">
+  <div [class.loading]="loading"></div>
+  <form
+    [formGroup]="createBlog"
+    (ngSubmit)="createBlog ? sendData() : updateBlog()"
+  >
+    <div class="formItem">
+      <label for="title"> Title* </label>
+      <input name="title" type="text" formControlName="title" />
+    </div>
+    <div class="formItem">
+      <label for="content"> Content* </label>
+      <textarea
+        name="content"
+        id=""
+        cols="30"
+        rows="7"
+        formControlName="content"
+      ></textarea>
+    </div>
+    <div class="formItem">
+      <label for="image"> Image </label>
+      <input type="file" name="image" id="selectedFile" (change)="onFileChange($event)" />
+      <div class="upload">
+        <div class="uploadName">
+          <p>Upload</p>
+        </div>
+        <div class="fileName" (click)="clickUpload()" >
+          <p>{{fileName ? fileName : 'Choose file'}}</p>
+        </div>
+        <button class="uploadBtn" (click)="clickUpload()" >Browser</button>
+      </div>
+      <p class="error">{{fileError}}</p>
+    </div>
+    <div class="actionForm">
+      <button class="btn" type="reset" (click)="gotoHome()">Cancel</button>
+      <button class="btn btnSubmit" type="submit">Upload</button>
+    </div>
+  </form>
+  <div class="notify" [class.appearSuccess]="successMessage" [class.appearError]="errorMessage">
+    <h3 [class.smile]="successMessage">{{successMessage}}</h3>
+    <h3 [class.sad]="errorMessage">{{errorMessage}}</h3>
+    <i class="material-icons" [class.smile]="successMessage">sentiment_very_satisfied</i>
+    <i class="material-icons"[class.sad]="errorMessage">sentiment_very_dissatisfied</i>
+  </div>
+</section>
