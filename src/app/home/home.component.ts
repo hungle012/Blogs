@@ -53,6 +53,10 @@ export class HomeComponent implements OnInit {
   }
 
   changePage(page: number) {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
     if (page > 0 && page <= this.totalPage) {
       this.params.page = page
       this.getData()
