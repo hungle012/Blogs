@@ -121,6 +121,7 @@ export class BlogFormComponent implements OnInit {
         this.loading = false
         setTimeout(() => {
           this.successMessage = ""
+          this.gotoHome()
         }, 3500);
       },
       (error) => {

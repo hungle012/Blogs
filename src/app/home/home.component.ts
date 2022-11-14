@@ -36,20 +36,18 @@ export class HomeComponent implements OnInit {
 
   getData() {
     this.loading = true
-    setTimeout(() => {
-      this.blog.getAllBlogs(this.params).subscribe(data => {
-        this.data = data['data'].items
-        this.totalPage = data['pagination'].total
-        this.currentPage = data['pagination'].page
-        if (this.pagination.length === 0 || this.pagination.length !== this.totalPage) {
-          this.pagination = []
-          for (let index = 1; index <= this.totalPage; index++) {
-            this.pagination.push(index)
-          }
+    this.blog.getAllBlogs(this.params).subscribe(data => {
+      this.data = data['data'].items
+      this.totalPage = data['pagination'].total
+      this.currentPage = data['pagination'].page
+      if (this.pagination.length === 0 || this.pagination.length !== this.totalPage) {
+        this.pagination = []
+        for (let index = 1; index <= this.totalPage; index++) {
+          this.pagination.push(index)
         }
-      })
-      this.loading = false
-    }, 700);
+      }
+    })
+    this.loading = false
   }
 
   changePage(page: number) {

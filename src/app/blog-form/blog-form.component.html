@@ -2,7 +2,7 @@
   <div [class.loading]="loading"></div>
   <form
     [formGroup]="createBlog"
-    (ngSubmit)="createBlog ? sendData() : updateBlog()"
+    (ngSubmit)="idBlog ? updateBlog() : sendData()"
   >
     <div class="formItem">
       <label for="title"> Title* </label>
@@ -28,13 +28,15 @@
         <div class="fileName" (click)="clickUpload()" >
           <p>{{fileName ? fileName : 'Choose file'}}</p>
         </div>
-        <button class="uploadBtn" (click)="clickUpload()" >Browser</button>
+        <button class="uploadBtn" type="button" (click)="clickUpload()" >Browser</button>
       </div>
       <p class="error">{{fileError}}</p>
     </div>
     <div class="actionForm">
       <button class="btn" type="reset" (click)="gotoHome()">Cancel</button>
-      <button class="btn btnSubmit" type="submit">Upload</button>
+      <button class="btn btnSubmit" type="submit">
+        {{idBlog ? "Edit" : "Upload"}}
+      </button>
     </div>
   </form>
   <div class="notify" [class.appearSuccess]="successMessage" [class.appearError]="errorMessage">
